@@ -1,4 +1,5 @@
 import { Wrapper } from "~/components/Wrapper";
+import { FormInputsDemo } from "./_components/FormInputsDemo";
 
 const colorGroups = [
   {
@@ -56,7 +57,11 @@ export default function ThemeTestPage() {
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Theme Test</h1>
           <p className="mt-2 text-lg text-gray-300">
-            Edit <code className="rounded bg-gray-200 px-1.5 py-0.5 text-sm font-mono">src/styles/globals.css</code> to rebrand.
+            Edit{" "}
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm">
+              src/styles/globals.css
+            </code>{" "}
+            to rebrand.
           </p>
         </div>
 
@@ -66,7 +71,7 @@ export default function ThemeTestPage() {
           <div className="space-y-6">
             {colorGroups.map((group) => (
               <div key={group.name}>
-                <h3 className="mb-2 text-sm font-medium uppercase tracking-wider text-gray-300">
+                <h3 className="mb-2 text-sm font-medium tracking-wider text-gray-300 uppercase">
                   {group.name}
                 </h3>
                 <div className="grid grid-cols-4 gap-3">
@@ -88,16 +93,16 @@ export default function ThemeTestPage() {
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">Buttons</h2>
           <div className="flex flex-wrap gap-4">
-            <button className="rounded-lg bg-primary-300 px-6 py-3 font-semibold text-white transition hover:bg-primary-400">
+            <button className="bg-primary-300 hover:bg-primary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
               Primary CTA
             </button>
-            <button className="rounded-lg bg-secondary-300 px-6 py-3 font-semibold text-white transition hover:bg-secondary-400">
+            <button className="bg-secondary-300 hover:bg-secondary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
               Secondary CTA
             </button>
-            <button className="rounded-lg bg-tertiary-300 px-6 py-3 font-semibold text-white transition hover:bg-tertiary-400">
+            <button className="bg-tertiary-300 hover:bg-tertiary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
               Tertiary CTA
             </button>
-            <button className="rounded-lg border-2 border-primary-300 px-6 py-3 font-semibold text-primary-300 transition hover:bg-primary-100">
+            <button className="border-primary-300 text-primary-300 hover:bg-primary-100 rounded-lg border-2 px-6 py-3 font-semibold transition">
               Outline
             </button>
             <button className="rounded-lg bg-gray-200 px-6 py-3 font-semibold text-gray-400 transition hover:bg-gray-300 hover:text-white">
@@ -111,30 +116,33 @@ export default function ThemeTestPage() {
           <h2 className="text-2xl font-semibold">Cards</h2>
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <div className="mb-3 inline-block rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-400">
+              <div className="bg-primary-100 text-primary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
                 Feature
               </div>
               <h3 className="text-lg font-semibold">Card on White</h3>
               <p className="mt-2 text-sm text-gray-300">
-                Uses neutral/gray text on a white card background with a primary badge.
+                Uses neutral/gray text on a white card background with a primary
+                badge.
               </p>
             </div>
-            <div className="rounded-xl bg-primary-400 p-6 text-white shadow-sm">
-              <div className="mb-3 inline-block rounded-full bg-primary-200 px-3 py-1 text-sm font-medium text-primary-400">
+            <div className="bg-primary-400 rounded-xl p-6 text-white shadow-sm">
+              <div className="bg-primary-200 text-primary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
                 Feature
               </div>
               <h3 className="text-lg font-semibold">Card on Primary-400</h3>
-              <p className="mt-2 text-sm text-primary-100">
-                Light text on a dark primary background for high-contrast sections.
+              <p className="text-primary-100 mt-2 text-sm">
+                Light text on a dark primary background for high-contrast
+                sections.
               </p>
             </div>
             <div className="rounded-xl bg-neutral-200 p-6 shadow-sm">
-              <div className="mb-3 inline-block rounded-full bg-secondary-100 px-3 py-1 text-sm font-medium text-secondary-400">
+              <div className="bg-secondary-100 text-secondary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
                 Feature
               </div>
               <h3 className="text-lg font-semibold">Card on Neutral-200</h3>
               <p className="mt-2 text-sm text-gray-300">
-                Subtle background using the neutral palette with a secondary accent badge.
+                Subtle background using the neutral palette with a secondary
+                accent badge.
               </p>
             </div>
           </div>
@@ -144,9 +152,19 @@ export default function ThemeTestPage() {
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">Type Scale (Golden Ratio)</h2>
           <p className="text-sm text-gray-300">
-            Swap fonts in <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">src/fonts/index.ts</code>.
-            Headings auto-use <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">font-heading</code>.
-            Body auto-uses <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">font-body</code>.
+            Swap fonts in{" "}
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              src/fonts/index.ts
+            </code>
+            . Headings auto-use{" "}
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              font-heading
+            </code>
+            . Body auto-uses{" "}
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              font-body
+            </code>
+            .
           </p>
           <div className="space-y-6 rounded-xl bg-white p-8 shadow-sm">
             <div className="border-b border-gray-200 pb-4">
@@ -162,27 +180,46 @@ export default function ThemeTestPage() {
               <h4 className="text-lg font-semibold">text-lg &middot; ~26px</h4>
             </div>
             <div className="border-b border-gray-200 pb-4">
-              <p className="text-base">text-base &middot; 16px — Body copy sits here. This is the default size for paragraphs and general content.</p>
+              <p className="text-base">
+                text-base &middot; 16px — Body copy sits here. This is the
+                default size for paragraphs and general content.
+              </p>
             </div>
             <div className="border-b border-gray-200 pb-4">
-              <p className="text-sm text-gray-300">text-sm &middot; 14px — Captions, labels, helper text.</p>
+              <p className="text-sm text-gray-300">
+                text-sm &middot; 14px — Captions, labels, helper text.
+              </p>
             </div>
             <div>
-              <p className="text-xs text-gray-300">text-xs &middot; 12px — Fine print, legal, metadata.</p>
+              <p className="text-xs text-gray-300">
+                text-xs &middot; 12px — Fine print, legal, metadata.
+              </p>
             </div>
           </div>
 
           {/* Font family comparison */}
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <p className="mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">font-body (Inter)</p>
-              <p className="font-body text-lg">The quick brown fox jumps over the lazy dog.</p>
-              <p className="font-body mt-2 text-base text-gray-300">Body text for readability. Clean, modern, works at any size.</p>
+              <p className="mb-2 text-xs font-medium tracking-wider text-gray-300 uppercase">
+                font-body (Inter)
+              </p>
+              <p className="font-body text-lg">
+                The quick brown fox jumps over the lazy dog.
+              </p>
+              <p className="font-body mt-2 text-base text-gray-300">
+                Body text for readability. Clean, modern, works at any size.
+              </p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <p className="mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">font-heading</p>
-              <h3 className="font-heading text-lg font-bold">The quick brown fox jumps over the lazy dog.</h3>
-              <p className="font-heading mt-2 text-base text-gray-300">Heading font for titles. Swap in src/fonts/index.ts.</p>
+              <p className="mb-2 text-xs font-medium tracking-wider text-gray-300 uppercase">
+                font-heading
+              </p>
+              <h3 className="font-heading text-lg font-bold">
+                The quick brown fox jumps over the lazy dog.
+              </h3>
+              <p className="font-heading mt-2 text-base text-gray-300">
+                Heading font for titles. Swap in src/fonts/index.ts.
+              </p>
             </div>
           </div>
         </section>
@@ -191,50 +228,98 @@ export default function ThemeTestPage() {
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">Wrapper Component</h2>
           <p className="text-sm text-gray-300">
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">padding</code>: xs / sm / lg
-            &nbsp;&middot;&nbsp;
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">rounded</code>: none / xs / sm / md / lg / xl
-            &nbsp;&middot;&nbsp;
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">as</code>: any HTML tag
-            &nbsp;&middot;&nbsp;
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">className</code>: bg, gradient, border, etc.
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              padding
+            </code>
+            : xs / sm / lg &nbsp;&middot;&nbsp;
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              rounded
+            </code>
+            : none / xs / sm / md / lg / xl &nbsp;&middot;&nbsp;
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              as
+            </code>
+            : any HTML tag &nbsp;&middot;&nbsp;
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+              className
+            </code>
+            : bg, gradient, border, etc.
           </p>
 
           <div className="space-y-4">
-            <Wrapper padding="lg" rounded="xl" className="bg-primary-400 text-white">
-              <h3 className="text-lg font-semibold">padding=&quot;lg&quot; &middot; rounded=&quot;xl&quot;</h3>
-              <p className="mt-1 text-sm text-primary-100">
+            <Wrapper
+              padding="lg"
+              rounded="xl"
+              className="bg-primary-400 text-white"
+            >
+              <h3 className="text-lg font-semibold">
+                padding=&quot;lg&quot; &middot; rounded=&quot;xl&quot;
+              </h3>
+              <p className="text-primary-100 mt-1 text-sm">
                 Large padding wrapper with xl rounding on a primary-400 bg.
               </p>
             </Wrapper>
 
             <Wrapper padding="sm" rounded="lg" className="bg-white shadow-sm">
-              <h3 className="text-lg font-semibold">padding=&quot;sm&quot; &middot; rounded=&quot;lg&quot;</h3>
+              <h3 className="text-lg font-semibold">
+                padding=&quot;sm&quot; &middot; rounded=&quot;lg&quot;
+              </h3>
               <p className="mt-1 text-sm text-gray-300">
                 Small padding wrapper with lg rounding. Card-style on white.
               </p>
             </Wrapper>
 
-            <Wrapper padding="xs" rounded="md" className="border border-gray-200 bg-neutral-100">
-              <h3 className="text-lg font-semibold">padding=&quot;xs&quot; &middot; rounded=&quot;md&quot;</h3>
+            <Wrapper
+              padding="xs"
+              rounded="md"
+              className="border border-gray-200 bg-neutral-100"
+            >
+              <h3 className="text-lg font-semibold">
+                padding=&quot;xs&quot; &middot; rounded=&quot;md&quot;
+              </h3>
               <p className="mt-1 text-sm text-gray-300">
-                XS padding, md rounding. Tight wrapper with a border via className.
+                XS padding, md rounding. Tight wrapper with a border via
+                className.
               </p>
             </Wrapper>
 
-            <Wrapper padding="lg" rounded="xl" className="bg-gradient-to-r from-primary-400 to-secondary-400 text-white">
+            <Wrapper
+              padding="lg"
+              rounded="xl"
+              className="from-primary-400 to-secondary-400 bg-gradient-to-r text-white"
+            >
               <h3 className="text-lg font-semibold">Gradient via className</h3>
-              <p className="mt-1 text-sm text-primary-100">
-                Large padding with a gradient background passed through className.
+              <p className="text-primary-100 mt-1 text-sm">
+                Large padding with a gradient background passed through
+                className.
               </p>
             </Wrapper>
 
-            <Wrapper as="section" padding="sm" rounded="lg" className="bg-tertiary-100 border border-tertiary-200">
-              <h3 className="text-lg font-semibold text-tertiary-400">as=&quot;section&quot;</h3>
-              <p className="mt-1 text-sm text-tertiary-300">
+            <Wrapper
+              as="section"
+              padding="sm"
+              rounded="lg"
+              className="bg-tertiary-100 border-tertiary-200 border"
+            >
+              <h3 className="text-tertiary-400 text-lg font-semibold">
+                as=&quot;section&quot;
+              </h3>
+              <p className="text-tertiary-300 mt-1 text-sm">
                 Renders as a &lt;section&gt; tag for semantic HTML.
               </p>
             </Wrapper>
+          </div>
+        </section>
+
+        {/* Form Inputs */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-semibold">Form Inputs</h2>
+          <p className="text-sm text-gray-300">
+            Accessible, rebrandable form components. Normal states, error
+            states, and disabled states.
+          </p>
+          <div className="rounded-xl bg-white p-8 shadow-sm">
+            <FormInputsDemo />
           </div>
         </section>
       </div>
