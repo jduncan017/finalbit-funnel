@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/*
+ * ===========================================
+ * BRAND THEME — Edit these to rebrand
+ * ===========================================
+ * Scale convention:
+ *   100 = lightest (backgrounds, tints)
+ *   200 = light    (hover states, borders)
+ *   300 = medium   (icons, secondary text)
+ *   400 = darkest  (headings, buttons, bold UI)
+ */
+
+@theme {
+  /* Font families — fed by CSS vars from src/fonts/index.ts */
+  --font-body: var(--font-body-face), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: var(--font-heading-face), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /*
+   * Type scale — golden ratio (×1.618) from 16px base
+   *   xs: 12px  ·  sm: 14px  ·  base: 16px
+   *   lg: ~26px ·  xl: ~42px ·  2xl: ~68px  ·  3xl: ~110px
+   */
+  --font-size-xs: 0.75rem;
+  --font-size-xs--line-height: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-sm--line-height: 1.25rem;
+  --font-size-base: 1rem;
+  --font-size-base--line-height: 1.5rem;
+  --font-size-lg: 1.618rem;
+  --font-size-lg--line-height: 2rem;
+  --font-size-xl: 2.618rem;
+  --font-size-xl--line-height: 3rem;
+  --font-size-2xl: 4.236rem;
+  --font-size-2xl--line-height: 4.75rem;
+  --font-size-3xl: 6.854rem;
+  --font-size-3xl--line-height: 7.5rem;
+
+  /* Primary — main brand color */
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #60A5FA;
+  --color-primary-300: #2563EB;
+  --color-primary-400: #1E3A5F;
+
+  /* Secondary — complementary accent */
+  --color-secondary-100: #D1FAE5;
+  --color-secondary-200: #6EE7B7;
+  --color-secondary-300: #059669;
+  --color-secondary-400: #064E3B;
+
+  /* Tertiary — additional accent */
+  --color-tertiary-100: #FEF3C7;
+  --color-tertiary-200: #FCD34D;
+  --color-tertiary-300: #D97706;
+  --color-tertiary-400: #78350F;
+
+  /* Neutral — warm tones for text & backgrounds */
+  --color-neutral-100: #FAF8F5;
+  --color-neutral-200: #E8E4DE;
+  --color-neutral-300: #9E9689;
+  --color-neutral-400: #2D2A26;
+
+  /* Gray — pure grays for borders & utilities */
+  --color-gray-100: #F4F4F5;
+  --color-gray-200: #D4D4D8;
+  --color-gray-300: #71717A;
+  --color-gray-400: #27272A;
+}
+
+/* Base typography — headings get heading font automatically */
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
