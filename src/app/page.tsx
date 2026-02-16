@@ -1,4 +1,7 @@
+import Link from "next/link";
 import { Wrapper } from "~/components/Wrapper";
+import { Button } from "~/components/Button";
+import { Card, Navbar, Hero, Footer } from "~/components/layout";
 import { FormInputsDemo } from "./_components/FormInputsDemo";
 
 const colorGroups = [
@@ -49,22 +52,134 @@ const colorGroups = [
   },
 ];
 
+const footerColumns = [
+  {
+    title: "Product",
+    links: [
+      { label: "Features", href: "#" },
+      { label: "Pricing", href: "#" },
+      { label: "Changelog", href: "#" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#" },
+      { label: "Blog", href: "#" },
+      { label: "Careers", href: "#" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Docs", href: "#" },
+      { label: "Help Center", href: "#" },
+      { label: "Community", href: "#" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", href: "#" },
+      { label: "Terms", href: "#" },
+      { label: "Cookies", href: "#" },
+    ],
+  },
+];
+
 export default function ThemeTestPage() {
   return (
-    <main className="min-h-screen bg-neutral-100 px-6 py-12 text-neutral-400">
-      <div className="mx-auto max-w-5xl space-y-16">
-        {/* Header */}
-        <div>
-          <h1 className="text-4xl font-bold tracking-tight">Theme Test</h1>
-          <p className="mt-2 text-lg text-gray-300">
-            Edit{" "}
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm">
-              src/styles/globals.css
-            </code>{" "}
-            to rebrand.
-          </p>
+    <main className="min-h-screen bg-neutral-100 text-neutral-400">
+      {/* Navbar Demo */}
+      <section className="mx-auto max-w-5xl space-y-6 px-6 pt-12">
+        <h2 className="text-2xl font-semibold">Navbar</h2>
+        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <Navbar cta={<Button size="sm">Get Started</Button>}>
+            <Link
+              href="#features"
+              className="hover:text-primary-300 text-base font-medium text-neutral-400 transition"
+            >
+              Features
+            </Link>
+            <Link
+              href="#pricing"
+              className="hover:text-primary-300 text-base font-medium text-neutral-400 transition"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="#about"
+              className="hover:text-primary-300 text-base font-medium text-neutral-400 transition"
+            >
+              About
+            </Link>
+          </Navbar>
         </div>
+        <div className="bg-primary-400 overflow-hidden rounded-xl shadow-sm">
+          <Navbar
+            cta={
+              <Button variant="secondary" size="sm">
+                Get Started
+              </Button>
+            }
+            className="text-white"
+          >
+            <Link
+              href="#features"
+              className="text-primary-100 text-base font-medium transition hover:text-white"
+            >
+              Features
+            </Link>
+            <Link
+              href="#pricing"
+              className="text-primary-100 text-base font-medium transition hover:text-white"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="#about"
+              className="text-primary-100 text-base font-medium transition hover:text-white"
+            >
+              About
+            </Link>
+          </Navbar>
+        </div>
+      </section>
 
+      {/* Hero Demo */}
+      <section className="mx-auto max-w-5xl space-y-6 px-6 pt-16">
+        <h2 className="text-2xl font-semibold">Hero</h2>
+        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <Hero
+            heading="Build Stunning Websites Fast"
+            subheading="A reusable marketing template with theming baked in. Clone, rebrand, ship."
+            actions={
+              <>
+                <Button size="lg">Start Building</Button>
+                <Button variant="outline" size="lg">
+                  Learn More
+                </Button>
+              </>
+            }
+          />
+        </div>
+        <div className="bg-primary-400 overflow-hidden rounded-xl shadow-sm">
+          <Hero
+            heading="Left-Aligned Hero"
+            subheading="Great for product pages with an image on the right side."
+            align="left"
+            actions={
+              <>
+                <Button variant="secondary">Get Started</Button>
+                <Button variant="ghost">Watch Demo</Button>
+              </>
+            }
+            className="text-white"
+          />
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-5xl space-y-16 px-6 py-16">
         {/* Color Swatches */}
         <section className="space-y-8">
           <h2 className="text-2xl font-semibold">Color Palette</h2>
@@ -89,62 +204,125 @@ export default function ThemeTestPage() {
           </div>
         </section>
 
-        {/* Sample Buttons */}
+        {/* Buttons */}
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">Buttons</h2>
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-primary-300 hover:bg-primary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
-              Primary CTA
-            </button>
-            <button className="bg-secondary-300 hover:bg-secondary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
-              Secondary CTA
-            </button>
-            <button className="bg-tertiary-300 hover:bg-tertiary-400 rounded-lg px-6 py-3 font-semibold text-white transition">
-              Tertiary CTA
-            </button>
-            <button className="border-primary-300 text-primary-300 hover:bg-primary-100 rounded-lg border-2 px-6 py-3 font-semibold transition">
-              Outline
-            </button>
-            <button className="rounded-lg bg-gray-200 px-6 py-3 font-semibold text-gray-400 transition hover:bg-gray-300 hover:text-white">
-              Muted
-            </button>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium tracking-wider text-gray-300 uppercase">
+              Variants
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="primary">Primary CTA</Button>
+              <Button variant="secondary">Secondary CTA</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium tracking-wider text-gray-300 uppercase">
+              Sizes
+            </h3>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button size="sm">Small</Button>
+              <Button size="md">Medium</Button>
+              <Button size="lg">Large</Button>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium tracking-wider text-gray-300 uppercase">
+              Rounding
+            </h3>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button rounded="none">None</Button>
+              <Button rounded="sm">Small</Button>
+              <Button rounded="md">Medium</Button>
+              <Button rounded="lg">Large</Button>
+              <Button rounded="xl">XL</Button>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium tracking-wider text-gray-300 uppercase">
+              States
+            </h3>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button disabled>Disabled</Button>
+              <Button loading>Loading</Button>
+              <Button variant="outline" disabled>
+                Outline Disabled
+              </Button>
+              <Button variant="secondary" loading>
+                Secondary Loading
+              </Button>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium tracking-wider text-gray-300 uppercase">
+              Polymorphic
+            </h3>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button as="a" href="#buttons">
+                Anchor Button
+              </Button>
+              <Button as="link" href="#buttons" variant="secondary">
+                Next Link Button
+              </Button>
+            </div>
           </div>
         </section>
 
-        {/* Sample Cards */}
+        {/* Cards */}
         <section className="space-y-6">
           <h2 className="text-2xl font-semibold">Cards</h2>
           <div className="grid gap-6 sm:grid-cols-3">
-            <div className="rounded-xl bg-white p-6 shadow-sm">
-              <div className="bg-primary-100 text-primary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
-                Feature
-              </div>
-              <h3 className="text-lg font-semibold">Card on White</h3>
-              <p className="mt-2 text-sm text-gray-300">
-                Uses neutral/gray text on a white card background with a primary
-                badge.
-              </p>
-            </div>
-            <div className="bg-primary-400 rounded-xl p-6 text-white shadow-sm">
-              <div className="bg-primary-200 text-primary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
-                Feature
-              </div>
-              <h3 className="text-lg font-semibold">Card on Primary-400</h3>
+            <Card
+              badge="Feature"
+              heading="Card on White"
+              description="Uses neutral/gray text on a white card background with a primary badge."
+              className="bg-white"
+            >
+              <></>
+            </Card>
+            <Card
+              badge="Feature"
+              heading="Card on Primary-400"
+              className="bg-primary-400 [&_.badge]:bg-primary-200 [&_.badge]:text-primary-400 text-white"
+            >
               <p className="text-primary-100 mt-2 text-sm">
                 Light text on a dark primary background for high-contrast
                 sections.
               </p>
-            </div>
-            <div className="rounded-xl bg-neutral-200 p-6 shadow-sm">
-              <div className="bg-secondary-100 text-secondary-400 mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium">
-                Feature
-              </div>
-              <h3 className="text-lg font-semibold">Card on Neutral-200</h3>
-              <p className="mt-2 text-sm text-gray-300">
-                Subtle background using the neutral palette with a secondary
-                accent badge.
-              </p>
-            </div>
+            </Card>
+            <Card
+              badge="Feature"
+              heading="Card on Neutral-200"
+              description="Subtle background using the neutral palette with a secondary accent badge."
+              className="bg-neutral-200"
+            >
+              <></>
+            </Card>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <Card
+              heading="Card with Action"
+              description="Cards can include an action slot for buttons or links."
+              action={<Button size="sm">Learn More</Button>}
+              className="bg-white"
+            >
+              <></>
+            </Card>
+            <Card
+              heading="Custom Rounding"
+              description="Override the default xl rounding."
+              rounded="sm"
+              className="bg-white"
+            >
+              <></>
+            </Card>
           </div>
         </section>
 
@@ -153,15 +331,15 @@ export default function ThemeTestPage() {
           <h2 className="text-2xl font-semibold">Type Scale (Golden Ratio)</h2>
           <p className="text-sm text-gray-300">
             Swap fonts in{" "}
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm">
               src/fonts/index.ts
             </code>
             . Headings auto-use{" "}
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm">
               font-heading
             </code>
             . Body auto-uses{" "}
-            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono">
+            <code className="rounded bg-gray-200 px-1.5 py-0.5 font-mono text-sm">
               font-body
             </code>
             .
@@ -323,6 +501,20 @@ export default function ThemeTestPage() {
           </div>
         </section>
       </div>
+
+      {/* Footer Demo */}
+      <section className="mx-auto max-w-5xl space-y-6 px-6">
+        <h2 className="text-2xl font-semibold">Footer</h2>
+        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <Footer
+            columns={footerColumns}
+            logo={
+              <span className="text-primary-400 text-lg font-bold">Brand</span>
+            }
+            copyright="&copy; 2026 Brand. All rights reserved."
+          />
+        </div>
+      </section>
 
       {/* Footer spacer */}
       <div className="mt-16" />
