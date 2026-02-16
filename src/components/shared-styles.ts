@@ -10,5 +10,5 @@ export const roundedClasses: Record<RoundedSize, string> = {
   sm: "rounded-[4px]",
   md: "rounded-[8px]",
   lg: "rounded-[16px]",
-  xl: "rounded-[24px]",
+  xl: "rounded-[100px]",
 };

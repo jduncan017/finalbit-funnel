@@ -8,7 +8,8 @@ export const buttonFocus =
   "focus:outline-none focus:ring-2 focus:ring-primary-200 focus:ring-offset-2";
 
 export const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-primary-300 text-white hover:bg-primary-400",
+  primary:
+    "bg-linear-to-br border border-primary-200/20 from-primary-300 to-primary-400 text-white hover:from-primary-200 hover:to-primary-300 hover:text-black",
   secondary: "bg-secondary-300 text-white hover:bg-secondary-400",
   outline:
     "border-2 border-primary-300 text-primary-300 bg-transparent hover:bg-primary-100",

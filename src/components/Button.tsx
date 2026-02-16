@@ -73,10 +73,10 @@ export function Button({
   as = "button",
   variant = "primary",
   size = "md",
-  rounded = "md",
+  rounded = "xl",
   loading = false,
   disabled = false,
-  className = "",
+  className = "shadow-theme",
   ...rest
 }: ButtonProps) {
   const classes = [

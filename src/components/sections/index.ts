@@ -1,0 +1,8 @@
+export { Hero } from "./Hero";
+export { FeatureGrid } from "./FeatureGrid";
+export { Testimonials } from "./Testimonials";
+export { ComparisonTable } from "./ComparisonTable";
+export { PricingCards } from "./PricingCards";
+export { OfferCard } from "./OfferCard";
+export { DemoForm } from "./DemoForm";
+export { EmailCapture } from "./EmailCapture";

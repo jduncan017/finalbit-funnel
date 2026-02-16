@@ -1,36 +1,30 @@
-import { Inter } from "next/font/google";
+import { Lexend_Deca, Courier_Prime } from "next/font/google";
 
 /*
  * ===========================================
- * FONTS — Swap these to rebrand
+ * FONTS — FinalBit brand
  * ===========================================
- * Each export produces a CSS variable that gets
- * wired into the Tailwind theme in globals.css.
- *
- * To use a local font instead:
- *   import localFont from "next/font/local";
- *   export const bodyFont = localFont({
- *     src: "./MyFont.woff2",
- *     variable: "--font-body-face",
- *   });
+ * Lexend Deca: primary brand font (body + headings)
+ * Courier Prime: screenplay/monospace accent font
  */
 
-// Body font
-export const bodyFont = Inter({
+// Body font — Lexend Deca Light/Regular/Medium
+export const bodyFont = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-body-face",
+  weight: ["300", "400", "500"],
 });
 
-// Heading font — using Inter for now. Swap to differentiate headings.
-// Example with a display font:
-//   import { Playfair_Display } from "next/font/google";
-//   export const headingFont = Playfair_Display({
-//     subsets: ["latin"],
-//     variable: "--font-heading-face",
-//     weight: ["700", "800"],
-//   });
-export const headingFont = Inter({
+// Heading font — Lexend Deca Medium/SemiBold/Bold
+export const headingFont = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-heading-face",
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
+});
+
+// Mono/accent font — Courier Prime (screenplay references, pricing)
+export const monoFont = Courier_Prime({
+  subsets: ["latin"],
+  variable: "--font-mono-face",
+  weight: "400",
 });

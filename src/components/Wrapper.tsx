@@ -32,7 +32,7 @@ export function Wrapper({
 }: WrapperProps) {
   return (
     <Tag
-      className={`${paddingClasses[padding]} ${roundedClasses[rounded]} ${className}`.trim()}
+      className={`shadow-theme ${paddingClasses[padding]} ${roundedClasses[rounded]} ${className}`.trim()}
     >
       {children}
     </Tag>

@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../Button";
 
 interface NavbarProps {
   children?: ReactNode;
@@ -21,23 +22,32 @@ export function Navbar({
 
   return (
     <nav
-      className={`relative ${sticky ? "sticky top-0 z-50" : ""} ${className}`}
+      className={`shadow-theme relative ${sticky ? "sticky top-0 z-50" : ""} ${className}`}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
-          <Image src="/logo.png" alt="Logo" width={120} height={32} priority />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            className="h-20 w-auto"
+            width={120}
+            height={32}
+            priority
+          />
         </Link>
 
         {/* Desktop nav links */}
-        <div className="hidden items-center gap-6 md:flex">{children}</div>
+        <div className="mr-8 hidden flex-1 items-end justify-end gap-6 md:flex">
+          {children}
+        </div>
 
         {/* Desktop CTA */}
         {cta && <div className="hidden items-center md:flex">{cta}</div>}
 
         {/* Hamburger button (mobile only) */}
-        <button
+        <Button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -53,7 +63,7 @@ export function Navbar({
           <span
             className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ${open ? "translate-y-0 -rotate-45" : "translate-y-1.5"}`}
           />
-        </button>
+        </Button>
       </div>
 
       {/* Mobile dropdown */}
