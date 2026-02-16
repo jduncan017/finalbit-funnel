@@ -1,4 +1,5 @@
 import { Check, X } from "lucide-react";
+import { FadeIn } from "~/components/FadeIn";
 
 const competitors = [
   "FinalBit",
@@ -66,11 +67,14 @@ export function ComparisonTable() {
   return (
     <section className="px-6">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-4 text-center">How FinalBit Compares</h2>
-        <p className="mb-12 text-center text-neutral-200">
-          The only platform that connects story development to pre-production in
-          one workspace.
-        </p>
+        <FadeIn>
+          <h2 className="mb-4 text-center">How FinalBit Compares</h2>
+          <p className="mb-12 text-center text-neutral-200">
+            The only platform that connects story development to pre-production
+            in one workspace.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
         <div className="overflow-x-auto rounded-[16px] border border-gray-400/30">
           <table className="w-full min-w-[640px] text-sm">
             <thead>
@@ -110,6 +114,7 @@ export function ComparisonTable() {
             </tbody>
           </table>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

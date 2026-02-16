@@ -6,3 +6,7 @@ export { PricingCards } from "./PricingCards";
 export { OfferCard } from "./OfferCard";
 export { DemoForm } from "./DemoForm";
 export { EmailCapture } from "./EmailCapture";
+export { ProductShowcase } from "./ProductShowcase";
+export { ValueProps } from "./ValueProps";
+export { SocialProof } from "./SocialProof";
+export { BottomCTA } from "./BottomCTA";

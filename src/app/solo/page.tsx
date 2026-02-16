@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { type Metadata } from "next";
-import { Zap, CalendarDays, LayoutGrid } from "lucide-react";
 import { Button } from "~/components/Button";
-import { IconBubble } from "~/components/IconBubble";
+import { FadeIn } from "~/components/FadeIn";
 import { Navbar, Footer } from "~/components/layout";
 import {
   Hero,
-  FeatureGrid,
+  ProductShowcase,
+  ValueProps,
   PricingCards,
   Testimonials,
+  SocialProof,
   EmailCapture,
 } from "~/components/sections";
 
@@ -17,39 +18,6 @@ export const metadata: Metadata = {
   description:
     "Upload your screenplay. Get a full breakdown, schedule, budget, and storyboard in minutes. Built for individual filmmakers and creators.",
 };
-
-const features = [
-  {
-    icon: (
-      <IconBubble size="sm">
-        <Zap />
-      </IconBubble>
-    ),
-    title: "Instant AI Breakdown",
-    description:
-      "Upload your screenplay and get a complete breakdown — characters, locations, props, wardrobe — generated in seconds, not days.",
-  },
-  {
-    icon: (
-      <IconBubble size="sm">
-        <CalendarDays />
-      </IconBubble>
-    ),
-    title: "Schedule & Budget",
-    description:
-      "AI generates your shooting schedule and production budget from the breakdown. Know your numbers before you commit.",
-  },
-  {
-    icon: (
-      <IconBubble size="sm">
-        <LayoutGrid />
-      </IconBubble>
-    ),
-    title: "Storyboard & Video",
-    description:
-      "Turn scenes into AI-generated storyboard frames and video clips. Visualize your film before you shoot a single frame.",
-  },
-];
 
 const steps = [
   {
@@ -138,45 +106,59 @@ export default function SoloPage() {
           </>
         }
         description="Stop spending days on manual pre-production. FinalBit handles breakdowns, scheduling, budgeting, storyboards, and video — so you can focus on the creative work."
+        screenshotDescription="Script upload interface with drag-and-drop zone and a preview of the AI-generated breakdown"
         cta={
-          <Button as="a" href="#signup" size="lg">
+          <Button
+            as="a"
+            href="#signup"
+            size="lg"
+            className="glow-cta shadow-theme"
+          >
             Start Free
           </Button>
         }
       />
 
-      {/* Features */}
-      <hr />
+      {/* Full Product View */}
+      <ProductShowcase />
+
+      {/* Feature Deep-Dives (alternating copy + product shots) */}
       <div id="features">
-        <FeatureGrid
-          heading="Everything You Need to Pre-Produce"
-          subheading="From screenplay to screen — powered by AI."
-          features={features}
-        />
+        <ValueProps />
       </div>
 
       {/* How It Works */}
       <hr />
-      <section className="px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-12 text-center">How It Works</h2>
+      <section className="relative overflow-hidden px-6">
+        {/* Decorative gradient orb */}
+        <div className="gradient-orb -right-24 top-0 h-[350px] w-[350px] bg-primary-300" />
+
+        <div className="relative mx-auto max-w-3xl">
+          <FadeIn>
+            <h2 className="mb-12 text-center">How It Works</h2>
+          </FadeIn>
           <div className="space-y-8">
-            {steps.map((step) => (
-              <div key={step.number} className="flex gap-5">
-                <div className="bg-primary-300/20 text-primary-300 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-mono text-sm font-bold">
-                  {step.number}
+            {steps.map((step, i) => (
+              <FadeIn key={step.number} delay={i * 100}>
+                <div className="flex gap-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-300/20 font-mono text-sm font-bold text-primary-300">
+                    {step.number}
+                  </div>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p className="mt-1 text-sm text-neutral-200">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p className="mt-1 text-sm text-neutral-200">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof />
 
       {/* Pricing */}
       <hr />

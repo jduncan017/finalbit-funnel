@@ -1,23 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import { type Metadata } from "next";
 import { Users, Sparkles, RefreshCcw, ArrowRight } from "lucide-react";
 import { Button } from "~/components/Button";
 import { IconBubble } from "~/components/IconBubble";
+import { FadeIn } from "~/components/FadeIn";
+import { CalModalTrigger } from "~/components/CalModalTrigger";
 import { Navbar, Footer } from "~/components/layout";
 import {
   Hero,
   FeatureGrid,
+  ProductShowcase,
   ComparisonTable,
   OfferCard,
   Testimonials,
+  SocialProof,
   DemoForm,
 } from "~/components/sections";
-
-export const metadata: Metadata = {
-  title: "FinalBit for Teams — Replace Your Entire Tool Stack",
-  description:
-    "One subscription replaces 4+ tools. AI-powered breakdowns, scheduling, budgeting, storyboards, and video — built for production teams.",
-};
 
 const painPoints = [
   {
@@ -99,9 +98,11 @@ export default function TeamsPage() {
       <Navbar
         sticky
         cta={
-          <Button as="a" href="#demo">
-            Book a Demo
-          </Button>
+          <CalModalTrigger>
+            {(openModal) => (
+              <Button onClick={openModal}>Book a Demo</Button>
+            )}
+          </CalModalTrigger>
         }
         className="bg-neutral-400/80 text-neutral-100 backdrop-blur-sm"
       >
@@ -135,38 +136,54 @@ export default function TeamsPage() {
           </>
         }
         description="AI automation that turns days of manual pre-production into hours. Breakdowns, scheduling, budgeting, storyboards, and video — all connected to your screenplay."
+        screenshotDescription="Team workspace showing collaborative breakdown, shared schedule, and real-time budget tracking"
         cta={
-          <Button as="a" href="#demo" size="lg">
-            Book a Demo
-          </Button>
+          <CalModalTrigger>
+            {(openModal) => (
+              <Button
+                onClick={openModal}
+                size="lg"
+                className="glow-cta shadow-theme"
+              >
+                Book a Demo
+              </Button>
+            )}
+          </CalModalTrigger>
         }
       />
 
       {/* Pain Points — Before / After */}
       <hr />
-      <section className="px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-10 text-center">
-            Stop Juggling Disconnected Tools
-          </h2>
+      <section className="relative overflow-hidden px-6">
+        {/* Decorative gradient orb */}
+        <div className="gradient-orb -left-24 top-1/2 h-[350px] w-[350px] -translate-y-1/2 bg-primary-300" />
+
+        <div className="relative mx-auto max-w-3xl">
+          <FadeIn>
+            <h2 className="mb-10 text-center">
+              Stop Juggling Disconnected Tools
+            </h2>
+          </FadeIn>
           <div className="space-y-4">
-            {painPoints.map((p) => (
-              <div
-                key={p.before}
-                className="flex items-center gap-4 rounded-[12px] border border-gray-400/30 bg-gray-400/20 px-5 py-4"
-              >
-                <span className="flex-1 text-sm text-neutral-300 line-through">
-                  {p.before}
-                </span>
-                <ArrowRight className="text-primary-300 h-5 w-5 shrink-0" />
-                <span className="text-secondary-300 flex-1 text-sm font-medium">
-                  {p.after}
-                </span>
-              </div>
+            {painPoints.map((p, i) => (
+              <FadeIn key={p.before} delay={i * 80}>
+                <div className="flex items-center gap-4 rounded-[12px] border border-gray-400/30 bg-gray-400/20 px-5 py-4">
+                  <span className="flex-1 text-sm text-neutral-300 line-through">
+                    {p.before}
+                  </span>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-primary-300" />
+                  <span className="flex-1 text-sm font-medium text-secondary-300">
+                    {p.after}
+                  </span>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Full Product View */}
+      <ProductShowcase />
 
       {/* Features */}
       <hr />
@@ -178,6 +195,9 @@ export default function TeamsPage() {
         />
       </div>
 
+      {/* Social Proof */}
+      <SocialProof />
+
       {/* Comparison Table */}
       <hr />
       <div id="compare">
@@ -186,7 +206,21 @@ export default function TeamsPage() {
 
       {/* Offer */}
       <hr />
-      <OfferCard />
+      <OfferCard
+        cta={
+          <CalModalTrigger>
+            {(openModal) => (
+              <Button
+                onClick={openModal}
+                size="lg"
+                className="glow-cta shadow-theme"
+              >
+                Book Your Demo
+              </Button>
+            )}
+          </CalModalTrigger>
+        }
+      />
 
       {/* Testimonials */}
       <hr />
