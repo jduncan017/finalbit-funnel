@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description:
     "Breakdowns, scheduling, budgets, storyboards, and video — one AI platform, fully connected to your screenplay.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({
