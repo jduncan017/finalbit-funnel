@@ -83,10 +83,10 @@ export function Button(props: ButtonProps) {
       {children}
       {arrow && (
         <span
-          className={`ml-4 flex shrink-0 items-center justify-center rounded-full bg-white p-2`}
+          className={`ml-4 hidden shrink-0 items-center justify-center rounded-full bg-white p-2 md:flex`}
         >
           <ArrowUpRight
-            className="h-6 w-6 rotate-45 text-neutral-400 transition-transform duration-300 md:rotate-0 md:group-hover:rotate-45"
+            className="h-6 w-6 text-neutral-400 transition-transform duration-300 group-hover:rotate-45"
             strokeWidth={2.5}
           />
         </span>

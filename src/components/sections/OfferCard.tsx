@@ -22,7 +22,7 @@ export function OfferCard({ cta }: OfferCardProps) {
     <section className="section-pad relative overflow-hidden bg-black/20">
       <div className="gradient-orb bg-primary-300 top-1/2 -left-32 h-[400px] w-[400px] -translate-y-1/2" />
 
-      <div className="relative mx-auto flex max-w-[1200px] flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col-reverse items-center gap-10 md:flex-row md:items-center md:gap-16">
         {/* Left — Offer copy + CTA */}
         <FadeIn className="flex flex-col items-start gap-6 md:w-5/12 md:shrink-0">
           <p className="text-base font-medium tracking-widest uppercase">
@@ -43,14 +43,14 @@ export function OfferCard({ cta }: OfferCardProps) {
             features, and dedicated onboarding — cancel anytime.
           </p>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full max-w-[520px] md:w-auto">
             {cta ?? (
               <Button
                 as="a"
                 href="#demo"
                 size="lg"
                 arrow
-                className="glow-cta shadow-theme"
+                className="glow-cta shadow-theme w-full md:w-auto"
               >
                 Book Your Demo
               </Button>

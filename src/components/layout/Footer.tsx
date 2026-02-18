@@ -27,7 +27,7 @@ export function Footer({
   className = "",
 }: FooterProps) {
   return (
-    <footer className={`bg-black/60 p-10 backdrop-blur-lg ${className}`}>
+    <footer className={`bg-black/60 p-4 backdrop-blur-lg md:p-10 ${className}`}>
       {columns.length > 0 && (
         <div className="mx-auto grid max-w-[1600px] gap-8 sm:grid-cols-2 md:grid-cols-4">
           {columns.map((col) => (

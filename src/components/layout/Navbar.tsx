@@ -1,9 +1,6 @@
-"use client";
-
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../Button";
 
 interface NavbarProps {
   children?: ReactNode;
@@ -18,20 +15,18 @@ export function Navbar({
   sticky = false,
   className = "",
 }: NavbarProps) {
-  const [open, setOpen] = useState(false);
-
   return (
     <nav
       className={`shadow-theme relative ${sticky ? "sticky top-0 z-50" : ""} ${className}`}
     >
       {/* Top bar */}
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-8 py-4">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-2 md:px-8 md:py-4">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/logo.png"
             alt="Logo"
-            className="h-20 w-auto"
+            className="h-12 w-auto md:h-20"
             width={120}
             height={32}
             priority
@@ -43,37 +38,8 @@ export function Navbar({
           {children}
         </div>
 
-        {/* Desktop CTA */}
-        {cta && <div className="hidden items-center md:flex">{cta}</div>}
-
-        {/* Hamburger button (mobile only) */}
-        <Button
-          type="button"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="relative flex h-8 w-8 items-center justify-center md:hidden"
-        >
-          <span
-            className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ${open ? "translate-y-0 rotate-45" : "-translate-y-1.5"}`}
-          />
-          <span
-            className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ${open ? "scale-x-0 opacity-0" : "opacity-100"}`}
-          />
-          <span
-            className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ${open ? "translate-y-0 -rotate-45" : "translate-y-1.5"}`}
-          />
-        </Button>
-      </div>
-
-      {/* Mobile dropdown */}
-      <div
-        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 md:hidden ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
-      >
-        <div className="overflow-hidden">
-          <div className="flex flex-col gap-4 px-6 pb-6">{children}</div>
-          {cta && <div className="px-6 pb-6">{cta}</div>}
-        </div>
+        {/* CTA — always visible */}
+        {cta && <div className="flex items-center">{cta}</div>}
       </div>
     </nav>
   );

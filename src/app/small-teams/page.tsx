@@ -110,12 +110,12 @@ export default function SoloPage() {
       <ProductShowcase image="/product/projects.png" />
 
       {/* Social Proof */}
-      <div className="SocialProofWrapper pb-40">
+      <div className="SocialProofWrapper pb-16 md:pb-40">
         <SocialProof />
       </div>
 
       {/* Feature Deep-Dives (alternating copy + product shots) */}
-      <div id="features" className="mb-20">
+      <div id="features" className="mb-10 md:mb-20">
         <hr />
         <ValueProps />
         <hr />
@@ -123,7 +123,7 @@ export default function SoloPage() {
 
       {/* How It Works */}
       <hr />
-      <section className="section-pad shadow-theme relative flex flex-col gap-20 overflow-hidden bg-black/20">
+      <section className="section-pad shadow-theme relative overflow-hidden bg-black/20">
         <div className="relative mx-auto max-w-[600px]">
           <FadeIn>
             <Eyebrow className="mb-3 text-center">Getting Started</Eyebrow>
@@ -178,15 +178,17 @@ export default function SoloPage() {
               Join thousands of filmmakers who go from screenplay to full
               pre-production in minutes. Free to start, no credit card required.
             </p>
-            <Button
-              as="a"
-              href="https://finalbit.com"
-              size="lg"
-              arrow
-              className="glow-cta shadow-theme mt-4"
-            >
-              Get Started Now
-            </Button>
+            <div className="mt-4 w-full max-w-[520px] md:w-auto">
+              <Button
+                as="a"
+                href="https://finalbit.com"
+                size="lg"
+                arrow
+                className="glow-cta shadow-theme w-full md:w-auto"
+              >
+                Get Started Now
+              </Button>
+            </div>
             <p className="mt-4 text-sm text-neutral-300">
               Have a larger team?{" "}
               <Link

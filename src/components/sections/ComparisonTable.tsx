@@ -75,17 +75,20 @@ export function ComparisonTable() {
           </p>
         </FadeIn>
         <FadeIn delay={150}>
+        <p className="mb-3 text-center text-sm text-neutral-300 md:hidden">
+          Swipe to compare all tools &rarr;
+        </p>
         <div className="overflow-x-auto rounded-[16px] border border-gray-200/20 bg-neutral-400/60">
           <table className="w-full min-w-[640px] text-base">
             <thead>
               <tr className="border-b border-gray-200/20 bg-white/[0.06]">
-                <th className="px-5 py-4 text-left font-medium text-neutral-200">
+                <th className="px-5 py-4 text-left text-lg font-medium text-neutral-200">
                   Feature
                 </th>
                 {competitors.map((c, i) => (
                   <th
                     key={c}
-                    className={`px-5 py-4 text-center font-semibold ${i === 0 ? "bg-linear-to-br from-primary-200 to-primary-300 bg-clip-text text-transparent" : "text-neutral-200"}`}
+                    className={`px-5 py-4 text-center text-lg font-semibold ${i === 0 ? "bg-linear-to-br from-primary-200 to-primary-300 bg-clip-text text-transparent" : "text-neutral-200"}`}
                   >
                     {c}
                   </th>

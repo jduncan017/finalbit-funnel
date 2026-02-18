@@ -70,7 +70,7 @@ export function PricingCards() {
       <div className="mx-auto max-w-[1200px]">
         <FadeIn>
           <h2 className="mb-4 text-center">Simple Pricing</h2>
-          <p className="mb-12 text-center text-neutral-200">
+          <p className="mb-8 text-center text-neutral-200 md:mb-12">
             Start creating. Upgrade when you&apos;re ready.
           </p>
         </FadeIn>

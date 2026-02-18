@@ -22,11 +22,11 @@ export const sizeClasses: Record<ButtonSize, string> = {
   lg: "py-4 px-8 text-xl",
 };
 
-/* When arrow is enabled, reduce right padding to hug the circle */
+/* When arrow is enabled, normal padding on mobile (arrow hidden), reduced right on desktop */
 export const arrowSizeClasses: Record<ButtonSize, string> = {
-  sm: "py-1.5 pl-4 pr-1.5 text-base",
-  md: "py-2 pl-6 pr-2 text-lg",
-  lg: "py-2 pl-8 pr-2 text-xl",
+  sm: "py-2 px-4 md:py-1.5 md:pl-4 md:pr-1.5 text-base",
+  md: "py-3 px-6 md:py-2 md:pl-6 md:pr-2 text-lg",
+  lg: "py-4 px-8 md:py-2 md:pl-8 md:pr-2 text-xl",
 };
 
 export const arrowCircleClasses: Record<ButtonSize, string> = {

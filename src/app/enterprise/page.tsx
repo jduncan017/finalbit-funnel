@@ -170,7 +170,7 @@ export default function TeamsPage() {
       <ProductShowcase />
 
       {/* Social Proof */}
-      <div className="SocialProofWrapper mb-40">
+      <div className="SocialProofWrapper mb-16 md:mb-40">
         <SocialProof />
       </div>
 
@@ -188,7 +188,7 @@ export default function TeamsPage() {
                   onClick={openModal}
                   size="lg"
                   arrow
-                  className="glow-cta shadow-theme"
+                  className="glow-cta shadow-theme w-full md:w-auto"
                 >
                   Schedule a Walkthrough
                 </Button>
@@ -215,7 +215,7 @@ export default function TeamsPage() {
                   onClick={openModal}
                   size="lg"
                   arrow
-                  className="glow-cta shadow-theme"
+                  className="glow-cta shadow-theme w-full md:w-auto"
                 >
                   Claim This Offer
                 </Button>

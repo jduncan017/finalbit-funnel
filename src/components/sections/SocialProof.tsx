@@ -10,13 +10,13 @@ const stats = [
 
 export function SocialProof() {
   return (
-    <section className="shadow-theme mx-auto w-full max-w-[1200px] rounded-full border border-gray-200/20 bg-black/20 p-20">
+    <section className="shadow-theme mx-4 max-w-[1200px] rounded-xl border border-gray-200/20 bg-black/20 p-6 md:mx-auto md:rounded-full md:p-20">
       <FadeIn>
-        <Eyebrow className="mb-10 text-center">
+        <Eyebrow className="mb-6 text-center md:mb-10">
           Trusted by filmmakers and studios worldwide
         </Eyebrow>
       </FadeIn>
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div className="flex flex-col gap-6 md:grid md:grid-cols-4 md:gap-8">
         {stats.map((stat, i) => (
           <FadeIn key={stat.label} delay={i * 100}>
             <div className="text-center">

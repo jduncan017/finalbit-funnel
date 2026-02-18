@@ -40,32 +40,40 @@ export function ValueProps() {
       <div className="mx-auto max-w-[1200px]">
         <FadeIn>
           <Eyebrow className="mb-3 text-center">Features</Eyebrow>
-          <h2 className="mb-24 text-center">
+          <h2 className="mb-12 text-center md:mb-24">
             Everything You Need, One Platform
           </h2>
         </FadeIn>
       </div>
-      <div className="mx-auto max-w-[1200px] space-y-40">
+      <div className="mx-auto max-w-[1200px] space-y-20 md:space-y-40">
         {rows.map((row, i) => {
           const imageOnRight = i % 2 === 0;
           return (
             <FadeIn key={row.heading} delay={i * 100}>
               <div
-                className={`flex flex-col items-center gap-10 md:flex-row md:gap-16 ${
+                className={`flex flex-col-reverse items-center gap-6 md:flex-row md:gap-16 ${
                   !imageOnRight ? "md:flex-row-reverse" : ""
                 }`}
               >
                 {/* Copy */}
-                <div className="flex max-w-[480px] flex-1 flex-col items-start gap-4">
+                <div className="flex max-w-[480px] flex-1 flex-col items-start gap-4 px-4 md:px-0">
                   <div className="Header flex items-center gap-4">
-                    <IconBubble size="sm">{row.icon}</IconBubble>
+                    <div className="hidden md:block">
+                      <IconBubble size="sm">{row.icon}</IconBubble>
+                    </div>
                     <h2>{row.heading}</h2>
                   </div>
                   <p className="text-neutral-200">{row.description}</p>
                 </div>
 
-                {/* Product shot */}
-                <div className="flex-1">
+                {/* Product shot — bleeds off-screen on mobile */}
+                <div
+                  className={`w-full flex-1 md:mx-0 ${
+                    imageOnRight
+                      ? "-mr-5 md:mr-0"
+                      : "-ml-5 md:ml-0"
+                  }`}
+                >
                   <ProductImage
                     src={row.image}
                     alt={row.shotAlt}

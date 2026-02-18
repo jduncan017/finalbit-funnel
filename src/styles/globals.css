@@ -192,6 +192,28 @@
   }
 }
 
+@keyframes product-slide-right-mobile {
+  from {
+    transform: translateX(40px);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes product-slide-left-mobile {
+  from {
+    transform: translateX(-40px);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes glow-pulse {
   0%,
   100% {
@@ -234,11 +256,13 @@
   .product-tilt-center {
     animation: product-tilt-center 0.8s ease-out 0.3s both;
   }
-  /* Mobile: always use center tilt regardless of direction */
+  /* Mobile: slide in from sides without rotateY */
   @media (max-width: 767px) {
-    .product-tilt-right,
+    .product-tilt-right {
+      animation-name: product-slide-right-mobile;
+    }
     .product-tilt-left {
-      animation-name: product-tilt-center;
+      animation-name: product-slide-left-mobile;
     }
   }
   .gradient-orb {
@@ -251,7 +275,7 @@
 
   /* Standardized section spacing */
   .section-pad {
-    padding: 1.5rem 2.5rem; /* 24px 40px — mobile */
+    padding: 2.5rem 1.25rem; /* 40px 20px — mobile */
   }
   @media (min-width: 768px) {
     .section-pad {
@@ -261,6 +285,16 @@
   @media (min-width: 1024px) {
     .section-pad {
       padding: 7.5rem 5rem; /* 120px 80px — desktop */
+    }
+  }
+
+  /* Mobile: product images bleed to edges, no perspective */
+  @media (max-width: 767px) {
+    .product-image-perspective {
+      perspective: none;
+    }
+    .product-image-glow {
+      border-radius: 8px;
     }
   }
 }

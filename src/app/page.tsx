@@ -8,7 +8,7 @@ import { Navbar, Footer } from "~/components/layout";
 import { analytics } from "~/lib/analytics";
 
 const teamSizes = [
-  { value: "", label: "Select your team size…" },
+  { value: "", label: "Select team size…" },
   { value: "1", label: "Just me" },
   { value: "2-3", label: "2–3 people" },
   { value: "4-5", label: "4–5 people" },
@@ -57,10 +57,10 @@ export default function LandingPage() {
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="border-primary-200/50 product-image-glow mx-auto mt-16 max-w-lg rounded-2xl border bg-blue-950/20 p-10">
+            <div className="border-primary-200/50 product-image-glow mx-auto mt-10 max-w-lg rounded-2xl border bg-blue-950/20 p-6 md:mt-16 md:p-10">
               <label
                 htmlFor="team-size"
-                className="mb-10 block text-2xl font-medium text-white"
+                className="mb-6 block text-xl font-medium text-white md:mb-10 md:text-2xl"
               >
                 How many people are on your production team?
               </label>

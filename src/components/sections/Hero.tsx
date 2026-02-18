@@ -23,15 +23,15 @@ export function Hero({
   return (
     <section className="section-pad relative overflow-hidden">
       {/* Gradient orb behind hero image */}
-      <div className="gradient-orb -right-16 top-1/2 h-[500px] w-[500px] -translate-y-1/2 bg-primary-300 opacity-20" />
+      <div className="gradient-orb -right-16 top-1/2 hidden h-[500px] w-[500px] -translate-y-1/2 bg-primary-300 opacity-20 md:block" />
 
-      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-10 md:flex-row md:items-center md:gap-16">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col-reverse gap-10 md:flex-row md:items-center md:gap-16">
         {/* Copy */}
         <FadeIn className="flex flex-col items-start gap-6 md:w-5/12 md:shrink-0">
-          <Eyebrow>{tagline}</Eyebrow>
+          <Eyebrow className="hidden md:block">{tagline}</Eyebrow>
           <h1>{heading}</h1>
           <p className="max-w-xl text-neutral-200">{description}</p>
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row">{cta}</div>
+          <div className="mt-4 flex w-full max-w-[520px] flex-col gap-4 sm:w-auto sm:flex-row">{cta}</div>
         </FadeIn>
 
         {/* Product image — extends past container edge on desktop */}
