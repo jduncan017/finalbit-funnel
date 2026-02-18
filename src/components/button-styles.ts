@@ -22,4 +22,17 @@ export const sizeClasses: Record<ButtonSize, string> = {
   lg: "py-4 px-8 text-xl",
 };
 
+/* When arrow is enabled, reduce right padding to hug the circle */
+export const arrowSizeClasses: Record<ButtonSize, string> = {
+  sm: "py-1.5 pl-4 pr-1.5 text-base",
+  md: "py-2 pl-6 pr-2 text-lg",
+  lg: "py-2 pl-8 pr-2 text-xl",
+};
+
+export const arrowCircleClasses: Record<ButtonSize, string> = {
+  sm: "ml-3 h-8 w-8",
+  md: "ml-4 h-10 w-10",
+  lg: "ml-4 h-12 w-12",
+};
+
 export const spinnerClasses = "animate-spin -ml-1 mr-2 h-4 w-4";

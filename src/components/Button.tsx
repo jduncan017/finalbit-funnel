@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 import { type RoundedSize, roundedClasses } from "./shared-styles";
 import {
   type ButtonVariant,
@@ -8,6 +9,7 @@ import {
   buttonFocus,
   variantClasses,
   sizeClasses,
+  arrowSizeClasses,
   spinnerClasses,
 } from "./button-styles";
 
@@ -18,6 +20,7 @@ type BaseProps = {
   rounded?: RoundedSize;
   loading?: boolean;
   disabled?: boolean;
+  arrow?: boolean;
   className?: string;
 };
 
@@ -43,49 +46,32 @@ type LinkElementProps = BaseProps & {
 type ButtonProps = ButtonElementProps | AnchorElementProps | LinkElementProps;
 
 function Spinner() {
-  return (
-    <svg
-      className={spinnerClasses}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      />
-    </svg>
-  );
+  return <Loader2 className={spinnerClasses} aria-hidden="true" />;
 }
 
-export function Button({
-  children,
-  as = "button",
-  variant = "primary",
-  size = "md",
-  rounded = "xl",
-  loading = false,
-  disabled = false,
-  className = "shadow-theme",
-  ...rest
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const {
+    children,
+    as = "button",
+    variant = "primary",
+    size: rawSize,
+    rounded: rawRounded,
+    loading = false,
+    disabled = false,
+    arrow = false,
+    className = "shadow-theme",
+    ...rest
+  } = props;
+  const size: ButtonSize = rawSize ?? "md";
+  const rounded: RoundedSize = rawRounded ?? "xl";
   const classes = [
     buttonBase,
     buttonFocus,
     variantClasses[variant],
-    sizeClasses[size],
+    arrow ? arrowSizeClasses[size] : sizeClasses[size],
     roundedClasses[rounded],
     loading ? "pointer-events-none opacity-75" : "",
+    arrow ? "group" : "",
     className,
   ]
     .filter(Boolean)
@@ -95,6 +81,16 @@ export function Button({
     <>
       {loading && <Spinner />}
       {children}
+      {arrow && (
+        <span
+          className={`ml-4 flex shrink-0 items-center justify-center rounded-full bg-white p-2`}
+        >
+          <ArrowUpRight
+            className="h-6 w-6 rotate-45 text-neutral-400 transition-transform duration-300 md:rotate-0 md:group-hover:rotate-45"
+            strokeWidth={2.5}
+          />
+        </span>
+      )}
     </>
   );
 

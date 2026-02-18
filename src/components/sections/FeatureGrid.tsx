@@ -13,6 +13,7 @@ interface FeatureGridProps {
   subheading?: string;
   features: Feature[];
   columns?: 2 | 3;
+  cta?: ReactNode;
 }
 
 export function FeatureGrid({
@@ -20,12 +21,13 @@ export function FeatureGrid({
   subheading,
   features,
   columns = 3,
+  cta,
 }: FeatureGridProps) {
   const gridCols = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3";
 
   return (
-    <section className="px-6">
-      <div className="mx-auto max-w-4xl">
+    <section className="section-pad shadow-theme bg-black/20">
+      <div className="mx-auto max-w-[1200px]">
         {(heading ?? subheading) && (
           <FadeIn>
             <div className="mb-12 text-center">
@@ -42,17 +44,22 @@ export function FeatureGrid({
               <Wrapper
                 rounded="lg"
                 padding="sm"
-                className="card-hover border border-gray-400/30 bg-gray-400/20"
+                className="card-hover border border-gray-400/30 bg-linear-to-br from-gray-200/20 to-gray-600/20"
               >
                 <div className="mb-4">{f.icon}</div>
                 <h3>{f.title}</h3>
-                <p className="mt-2 text-sm text-neutral-200">
+                <p className="mt-2 text-base text-neutral-200">
                   {f.description}
                 </p>
               </Wrapper>
             </FadeIn>
           ))}
         </div>
+        {cta && (
+          <div className="mt-12 text-center">
+            {cta}
+          </div>
+        )}
       </div>
     </section>
   );

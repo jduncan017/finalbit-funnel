@@ -5,6 +5,7 @@ import { CircleCheck } from "lucide-react";
 import { Button } from "~/components/Button";
 import { Wrapper } from "~/components/Wrapper";
 import { FadeIn } from "~/components/FadeIn";
+import { analytics } from "~/lib/analytics";
 
 export function EmailCapture() {
   const [submitted, setSubmitted] = useState(false);
@@ -18,13 +19,14 @@ export function EmailCapture() {
     // TODO: wire up to webhook / CRM endpoint, then redirect to FinalBit signup
     await new Promise((resolve) => setTimeout(resolve, 800));
 
+    analytics.trialStarted(email);
     setLoading(false);
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
-      <section id="signup" className="px-6">
+      <section id="signup" className="section-pad">
         <FadeIn>
           <Wrapper
             rounded="lg"
@@ -46,7 +48,7 @@ export function EmailCapture() {
   }
 
   return (
-    <section id="signup" className="px-6">
+    <section id="signup" className="section-pad">
       <FadeIn>
         <div className="mx-auto max-w-md text-center">
           <h2 className="mb-2">Start Your Free Trial</h2>
@@ -65,7 +67,7 @@ export function EmailCapture() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="flex-1 rounded-[8px] border border-gray-400/30 bg-gray-400/30 px-4 py-3 text-base text-white placeholder:text-neutral-300 focus:border-primary-300 focus:ring-2 focus:ring-primary-200 focus:outline-none"
+              className="flex-1 rounded-[8px] border border-gray-200 bg-white px-4 py-3 text-base text-neutral-400 placeholder:text-gray-300 focus:border-primary-300 focus:ring-2 focus:ring-primary-200 focus:outline-none"
             />
             <Button
               type="submit"

@@ -1,6 +1,7 @@
 "use client";
 
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { Check } from "lucide-react";
 import { errorBase, helperBase, labelBase } from "./input-styles";
 
 interface CheckboxProps {
@@ -43,21 +44,7 @@ export function Checkbox({
           className={`focus:ring-primary-200 focus:border-primary-300 data-[state=checked]:border-primary-300 data-[state=checked]:bg-primary-300 flex h-5 w-5 shrink-0 items-center justify-center rounded-[4px] border border-gray-200 bg-white transition-colors focus:ring-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${error ? "border-tertiary-300" : ""} ${className}`.trim()}
         >
           <CheckboxPrimitive.Indicator>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 3L4.5 8.5L2 6"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Check className="h-3 w-3 text-white" strokeWidth={3} />
           </CheckboxPrimitive.Indicator>
         </CheckboxPrimitive.Root>
 

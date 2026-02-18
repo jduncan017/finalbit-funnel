@@ -2,6 +2,7 @@
 
 import * as Popover from "@radix-ui/react-popover";
 import { useState } from "react";
+import { ChevronDown, X, Check } from "lucide-react";
 import {
   inputBase,
   inputDisabled,
@@ -113,33 +114,11 @@ export function MultiSelect({
                   aria-label={`Remove ${getLabelForValue(val)}`}
                   className="hover:bg-primary-200 ml-0.5 cursor-pointer rounded-full p-0.5 transition-colors"
                 >
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path
-                      d="M9 3L3 9M3 3L9 9"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <X className="h-3 w-3" />
                 </span>
               </span>
             ))}
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="ml-auto shrink-0 text-gray-300"
-            >
-              <path
-                d="M4 6L8 10L12 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-gray-300" />
           </button>
         </Popover.Trigger>
 
@@ -168,21 +147,7 @@ export function MultiSelect({
                 >
                   <span className="flex-1">{option.label}</span>
                   {isSelected && (
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="text-primary-300 shrink-0"
-                    >
-                      <path
-                        d="M13 4L6 11L3 8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <Check className="h-4 w-4 shrink-0 text-primary-300" />
                   )}
                 </button>
               );

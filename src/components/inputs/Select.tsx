@@ -1,6 +1,7 @@
 "use client";
 
 import * as SelectPrimitive from "@radix-ui/react-select";
+import { ChevronDown, Check } from "lucide-react";
 import {
   inputBase,
   inputDisabled,
@@ -68,21 +69,7 @@ export function Select({
         >
           <SelectPrimitive.Value placeholder={placeholder} />
           <SelectPrimitive.Icon>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="text-gray-300"
-            >
-              <path
-                d="M4 6L8 10L12 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ChevronDown className="h-4 w-4 text-gray-300" />
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
 
@@ -104,21 +91,7 @@ export function Select({
                     {option.label}
                   </SelectPrimitive.ItemText>
                   <SelectPrimitive.ItemIndicator className="ml-auto">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="text-primary-300"
-                    >
-                      <path
-                        d="M13 4L6 11L3 8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <Check className="h-4 w-4 text-primary-300" />
                   </SelectPrimitive.ItemIndicator>
                 </SelectPrimitive.Item>
               ))}

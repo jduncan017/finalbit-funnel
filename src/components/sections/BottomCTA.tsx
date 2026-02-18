@@ -19,7 +19,7 @@ export function BottomCTA() {
             stack with one connected platform.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as="link" href="/solo" size="lg" className="glow-cta shadow-theme">
+            <Button as="link" href="/small-teams" size="lg" className="glow-cta shadow-theme">
               Start Free
             </Button>
             <CalModalTrigger>

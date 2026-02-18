@@ -12,7 +12,7 @@ export const inputError =
 
 export const inputPadding = "px-3 py-2";
 
-export const labelBase = "text-sm font-medium text-neutral-400";
+export const labelBase = "text-sm font-medium text-white";
 
 export const errorBase = "text-sm text-tertiary-300";
 

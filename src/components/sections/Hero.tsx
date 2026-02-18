@@ -1,12 +1,14 @@
 import { type ReactNode } from "react";
 import { FadeIn } from "~/components/FadeIn";
-import { ProductShot } from "~/components/ProductShot";
+import { Eyebrow } from "~/components/Eyebrow";
+import { ProductImage } from "~/components/ProductImage";
 
 interface HeroProps {
   tagline: string;
   heading: ReactNode;
   description: string;
   cta: ReactNode;
+  image?: string;
   screenshotDescription?: string;
 }
 
@@ -15,32 +17,30 @@ export function Hero({
   heading,
   description,
   cta,
+  image = "/product/script-upload.jpg",
   screenshotDescription,
 }: HeroProps) {
   return (
-    <section className="h-fit px-6 pt-16 pb-12 md:px-16 md:py-32 lg:px-20">
-      <div className="mx-auto flex h-fit max-w-[1280px] flex-col gap-10 md:flex-row md:gap-20">
+    <section className="section-pad relative overflow-hidden">
+      {/* Gradient orb behind hero image */}
+      <div className="gradient-orb -right-16 top-1/2 h-[500px] w-[500px] -translate-y-1/2 bg-primary-300 opacity-20" />
+
+      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-10 md:flex-row md:items-center md:gap-16">
         {/* Copy */}
-        <FadeIn className="flex flex-1 flex-col items-start gap-6">
-          <p className="text-primary-300 text-sm font-medium tracking-widest uppercase">
-            {tagline}
-          </p>
+        <FadeIn className="flex flex-col items-start gap-6 md:w-5/12 md:shrink-0">
+          <Eyebrow>{tagline}</Eyebrow>
           <h1>{heading}</h1>
           <p className="max-w-xl text-neutral-200">{description}</p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">{cta}</div>
         </FadeIn>
 
-        {/* Image placeholder */}
-        <FadeIn delay={200} className="flex flex-1 items-center">
-          {screenshotDescription ? (
-            <ProductShot
-              description={screenshotDescription}
-              aspectRatio="auto"
-              className="h-full w-full"
-            />
-          ) : (
-            <div className="from-primary-300/20 shadow-theme border-primary-200/10 via-primary-400/40 h-full w-full rounded-xl border bg-linear-to-br to-neutral-400" />
-          )}
+        {/* Product image — extends past container edge on desktop */}
+        <FadeIn delay={200} className="flex min-w-0 flex-1 items-center md:-mr-16 lg:-mr-32">
+          <ProductImage
+            src={image}
+            alt={screenshotDescription ?? "FinalBit product interface"}
+            direction="right"
+          />
         </FadeIn>
       </div>
     </section>

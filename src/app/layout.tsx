@@ -1,7 +1,9 @@
 import "~/styles/globals.css";
 
+import { Suspense } from "react";
 import { type Metadata } from "next";
 import { bodyFont, headingFont, monoFont } from "~/fonts";
+import { PostHogProvider } from "~/components/PostHogProvider";
 
 export const metadata: Metadata = {
   title: "FinalBit — AI-Powered Pre-Production",
@@ -19,9 +21,13 @@ export default function RootLayout({
       className={`${bodyFont.variable} ${headingFont.variable} ${monoFont.variable}`}
     >
       <body className="font-body min-h-screen bg-neutral-400 leading-normal text-neutral-100">
-        <div className="from-primary-400/30 to-primary-400/30 bg-linear-to-r via-transparent">
-          {children}
-        </div>
+        <Suspense>
+          <PostHogProvider>
+            <div className="from-primary-400/20 to-primary-400/20 bg-linear-to-r via-transparent">
+              {children}
+            </div>
+          </PostHogProvider>
+        </Suspense>
       </body>
     </html>
   );

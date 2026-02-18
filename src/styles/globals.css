@@ -78,7 +78,7 @@
   --shadow-theme: 4px 4px 8px rgb(0 0 0 / 0.2);
 
   /* Ticker animation */
-  --animate-ticker: ticker 30s linear infinite;
+  --animate-ticker: ticker 120s linear infinite;
 
   /* Scroll-triggered & glow animations */
   --animate-fade-in-up: fade-in-up 0.6s ease-out both;
@@ -104,7 +104,7 @@
   }
 
   h1 {
-    font-size: clamp(2.618rem, 4vw + 1rem, 4.236rem);
+    font-size: clamp(2.618rem, 4vw + 1rem, 3.5rem);
     font-weight: 700;
     text-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
   }
@@ -126,6 +126,7 @@
 
   p,
   li {
+    font-size: clamp(1rem, 1.5vw + 0.25rem, 1.2rem);
     line-height: 1.6;
   }
 
@@ -133,7 +134,7 @@
   hr {
     border: none;
     height: 1px;
-    margin: 2rem 0;
+    margin: 0;
     background: linear-gradient(
       to right,
       transparent,
@@ -141,18 +142,6 @@
       transparent
     );
     opacity: 0.2;
-  }
-
-  @media (min-width: 768px) {
-    hr {
-      margin: 2.5rem 0;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    hr {
-      margin: 3.75rem 0;
-    }
   }
 }
 
@@ -173,6 +162,33 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes product-tilt-right {
+  from {
+    transform: translateX(30px) rotateY(-6deg);
+  }
+  to {
+    transform: translateX(10px) rotateY(-3deg);
+  }
+}
+
+@keyframes product-tilt-left {
+  from {
+    transform: translateX(-30px) rotateY(6deg);
+  }
+  to {
+    transform: translateX(-10px) rotateY(3deg);
+  }
+}
+
+@keyframes product-tilt-center {
+  from {
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -199,11 +215,52 @@
   .glow-cta {
     animation: glow-pulse 2s ease-in-out infinite;
   }
+  /* Product image — window chrome + glow + directional tilt */
+  .product-image-perspective {
+    perspective: 1200px;
+  }
+  .product-image-glow {
+    box-shadow:
+      0 0 30px rgba(29, 110, 227, 0.25),
+      0 0 60px rgba(29, 110, 227, 0.15),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  .product-tilt-right {
+    animation: product-tilt-right 0.8s ease-out 0.3s both;
+  }
+  .product-tilt-left {
+    animation: product-tilt-left 0.8s ease-out 0.3s both;
+  }
+  .product-tilt-center {
+    animation: product-tilt-center 0.8s ease-out 0.3s both;
+  }
+  /* Mobile: always use center tilt regardless of direction */
+  @media (max-width: 767px) {
+    .product-tilt-right,
+    .product-tilt-left {
+      animation-name: product-tilt-center;
+    }
+  }
   .gradient-orb {
     position: absolute;
     border-radius: 9999px;
     filter: blur(80px);
     opacity: 0.15;
     pointer-events: none;
+  }
+
+  /* Standardized section spacing */
+  .section-pad {
+    padding: 1.5rem 2.5rem; /* 24px 40px — mobile */
+  }
+  @media (min-width: 768px) {
+    .section-pad {
+      padding: 5rem 4rem; /* 80px 64px — tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-pad {
+      padding: 7.5rem 5rem; /* 120px 80px — desktop */
+    }
   }
 }

@@ -25,7 +25,7 @@ export function Navbar({
       className={`shadow-theme relative ${sticky ? "sticky top-0 z-50" : ""} ${className}`}
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-8 py-4">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
           <Image

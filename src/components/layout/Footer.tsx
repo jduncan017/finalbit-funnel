@@ -27,9 +27,9 @@ export function Footer({
   className = "",
 }: FooterProps) {
   return (
-    <footer className={`px-6 py-12 ${className}`}>
+    <footer className={`bg-black/60 p-10 backdrop-blur-lg ${className}`}>
       {columns.length > 0 && (
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 md:grid-cols-4">
+        <div className="mx-auto grid max-w-[1600px] gap-8 sm:grid-cols-2 md:grid-cols-4">
           {columns.map((col) => (
             <div key={col.title}>
               <h4 className="mb-3 text-sm font-semibold tracking-wider text-neutral-400 uppercase">
@@ -52,7 +52,7 @@ export function Footer({
         </div>
       )}
 
-      <div className="mx-auto mt-8 flex max-w-5xl flex-col items-center gap-4 border-t border-gray-200 pt-8 sm:flex-row sm:justify-between">
+      <div className="mx-auto mt-8 flex max-w-[1520px] flex-col items-center gap-4 border-t border-gray-200 px-8 pt-8 sm:flex-row sm:justify-between">
         {logo && <div>{logo}</div>}
         {copyright && <p className="text-sm text-gray-300">{copyright}</p>}
         {bottomContent && <div>{bottomContent}</div>}

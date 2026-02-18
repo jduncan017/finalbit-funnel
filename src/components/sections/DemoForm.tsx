@@ -6,6 +6,7 @@ import { TextInput, Select } from "~/components/inputs";
 import { Button } from "~/components/Button";
 import { Wrapper } from "~/components/Wrapper";
 import { FadeIn } from "~/components/FadeIn";
+import { analytics } from "~/lib/analytics";
 
 const teamSizeOptions = [
   { value: "2-5", label: "2–5 people" },
@@ -25,13 +26,14 @@ export function DemoForm() {
     // TODO: wire up to webhook / CRM endpoint
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    analytics.demoRequested();
     setLoading(false);
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
-      <section id="demo" className="px-6">
+      <section id="demo" className="section-pad">
         <FadeIn>
           <Wrapper
             rounded="lg"
@@ -53,7 +55,7 @@ export function DemoForm() {
   }
 
   return (
-    <section id="demo" className="px-6">
+    <section id="demo" className="section-pad">
       <FadeIn>
         <div className="mx-auto max-w-lg">
           <h2 className="mb-2 text-center">Book Your Demo</h2>

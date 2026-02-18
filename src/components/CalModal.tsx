@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import { analytics } from "~/lib/analytics";
 
 interface CalModalProps {
   open: boolean;
@@ -13,6 +15,7 @@ export function CalModal({ open, onClose }: CalModalProps) {
     if (!open) return;
 
     document.body.style.overflow = "hidden";
+    analytics.calModalOpened(window.location.pathname);
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
@@ -26,7 +29,7 @@ export function CalModal({ open, onClose }: CalModalProps) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
       onClick={onClose}
@@ -56,6 +59,7 @@ export function CalModal({ open, onClose }: CalModalProps) {
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

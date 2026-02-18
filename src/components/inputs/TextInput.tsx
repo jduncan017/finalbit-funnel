@@ -1,6 +1,7 @@
 "use client";
 
 import { type ComponentPropsWithoutRef, forwardRef, useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import {
   inputBase,
   inputDisabled,
@@ -73,32 +74,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-300 transition-colors hover:text-neutral-400 disabled:pointer-events-none"
             >
               {showPassword ? (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M2.5 2.5L17.5 17.5M8.82 8.82a1.67 1.67 0 0 0 2.36 2.36M5.94 5.94A8.27 8.27 0 0 0 2 10c1.53 3.33 4.5 5.5 8 5.5a7.8 7.8 0 0 0 4.06-1.12M10 4.5c3.5 0 6.47 2.17 8 5.5a8.6 8.6 0 0 1-1.64 2.56"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <EyeOff className="h-5 w-5" />
               ) : (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M2 10c1.53-3.33 4.5-5.5 8-5.5s6.47 2.17 8 5.5c-1.53 3.33-4.5 5.5-8 5.5S3.53 13.33 2 10Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle
-                    cx="10"
-                    cy="10"
-                    r="2.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                </svg>
+                <Eye className="h-5 w-5" />
               )}
             </button>
           )}

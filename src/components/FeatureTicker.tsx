@@ -19,7 +19,7 @@ export function FeatureTicker({ features }: FeatureTickerProps) {
 
   return (
     <div className="overflow-hidden border border-gray-300/20 bg-black/40 py-6 backdrop-blur-lg">
-      <div className="animate-ticker flex w-max gap-4 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] hover:[animation-play-state:paused]">
+      <div className="animate-ticker flex w-max gap-4 hover:[animation-play-state:paused]">
         {doubled.map((f, i) => (
           <Wrapper
             key={`${f.label}-${i}`}

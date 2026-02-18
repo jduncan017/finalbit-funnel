@@ -1,46 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import {
-  List,
-  CalendarDays,
-  CircleDollarSign,
-  LayoutGrid,
-  Video,
-  BookOpen,
-} from "lucide-react";
-import { FeatureTicker } from "~/components/FeatureTicker";
+import { ChevronDown } from "lucide-react";
 import { FadeIn } from "~/components/FadeIn";
+import { Eyebrow } from "~/components/Eyebrow";
 import { Navbar, Footer } from "~/components/layout";
-
-const features = [
-  {
-    icon: <List />,
-    label: "Breakdown",
-    description: "AI-powered script analysis",
-  },
-  {
-    icon: <CalendarDays />,
-    label: "Scheduling",
-    description: "Smart shoot planning",
-  },
-  {
-    icon: <CircleDollarSign />,
-    label: "Budgeting",
-    description: "Accurate cost estimates",
-  },
-  {
-    icon: <LayoutGrid />,
-    label: "Storyboard",
-    description: "Visual scene layouts",
-  },
-  { icon: <Video />, label: "Video", description: "AI-generated previews" },
-  {
-    icon: <BookOpen />,
-    label: "Story Dev",
-    description: "Script analysis & notes",
-  },
-];
+import { analytics } from "~/lib/analytics";
 
 const teamSizes = [
   { value: "", label: "Select your team size…" },
@@ -52,7 +17,7 @@ const teamSizes = [
   { value: "20+", label: "20+ people" },
 ];
 
-const TEAM_THRESHOLD = 3; // index in teamSizes where it tips to /teams
+const TEAM_THRESHOLD = 4; // index in teamSizes where it tips to /enterprise
 
 export default function LandingPage() {
   const router = useRouter();
@@ -60,11 +25,9 @@ export default function LandingPage() {
   function handleSelect(value: string) {
     if (!value) return;
     const idx = teamSizes.findIndex((t) => t.value === value);
-    if (idx >= TEAM_THRESHOLD) {
-      router.push("/teams");
-    } else {
-      router.push("/solo");
-    }
+    const destination = idx >= TEAM_THRESHOLD ? "enterprise" : "small-teams";
+    analytics.funnelRouted(value, destination);
+    router.push(`/${destination}`);
   }
 
   return (
@@ -72,19 +35,20 @@ export default function LandingPage() {
       {/* Navbar */}
       <Navbar
         sticky
-        className="bg-neutral-400/80 text-neutral-100 backdrop-blur-sm"
+        className="bg-black/80 text-neutral-100 backdrop-blur-lg"
       />
 
       {/* Hero — single focused CTA */}
-      <section className="flex flex-1 items-center px-6 pt-16 pb-12 md:px-16 md:py-32 lg:px-20">
-        <div className="mx-auto max-w-2xl text-center">
+      <section className="section-pad flex flex-1 items-center">
+        <div className="mx-auto max-w-[1200px] text-center">
           <FadeIn>
-            <p className="text-primary-300 mb-4 text-sm font-medium tracking-widest uppercase">
-              AI-Powered Pre-Production
-            </p>
+            <Eyebrow className="mb-4">AI-Powered Pre-Production</Eyebrow>
             <h1>
-              Script to Screen.{" "}
-              <span className="text-primary-300">Hours, Not Weeks.</span>
+              Script to Screen.
+              <br />
+              <span className="from-primary-200 to-primary-300 bg-linear-to-br bg-clip-text text-transparent">
+                Hours, Not Weeks.
+              </span>
             </h1>
             <p className="mx-auto mt-6 max-w-lg text-neutral-200">
               Breakdowns, scheduling, budgets, storyboards, and video — one
@@ -93,39 +57,38 @@ export default function LandingPage() {
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="mx-auto mt-10 max-w-sm">
+            <div className="border-primary-200/50 product-image-glow mx-auto mt-16 max-w-lg rounded-2xl border bg-blue-950/20 p-10">
               <label
                 htmlFor="team-size"
-                className="mb-3 block text-sm font-medium text-white"
+                className="mb-10 block text-2xl font-medium text-white"
               >
                 How many people are on your production team?
               </label>
-              <select
-                id="team-size"
-                onChange={(e) => handleSelect(e.target.value)}
-                defaultValue=""
-                className="w-full cursor-pointer rounded-xl border border-gray-400/30 bg-gray-400/30 px-4 py-3.5 text-base text-white transition focus:border-primary-300 focus:ring-2 focus:ring-primary-200 focus:outline-none"
-              >
-                {teamSizes.map((t) => (
-                  <option
-                    key={t.value}
-                    value={t.value}
-                    disabled={!t.value}
-                    className="bg-neutral-400 text-white"
-                  >
-                    {t.label}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  id="team-size"
+                  onChange={(e) => handleSelect(e.target.value)}
+                  defaultValue=""
+                  className="shadow-theme border-primary-300 focus:ring-primary-200 w-full cursor-pointer appearance-none rounded-xl border-2 bg-white px-6 py-5 pr-14 text-xl text-neutral-400 transition focus:ring-2 focus:outline-none"
+                >
+                  {teamSizes.map((t) => (
+                    <option
+                      key={t.value}
+                      value={t.value}
+                      disabled={!t.value}
+                      className="bg-white text-neutral-400"
+                    >
+                      {t.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="text-primary-300 pointer-events-none absolute top-1/2 right-5 h-6 w-6 -translate-y-1/2"
+                  strokeWidth={2.5}
+                />
+              </div>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* Feature Ticker */}
-      <section>
-        <div className="mx-auto max-w-[1280px]">
-          <FeatureTicker features={features} />
         </div>
       </section>
 

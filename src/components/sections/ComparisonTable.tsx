@@ -45,7 +45,7 @@ const features = [
   },
   {
     name: "Team Seats (base)",
-    support: ["10", "10", "N/A", "6", "—", "—"] as const,
+    support: ["12", "10", "N/A", "6", "—", "—"] as const,
   },
   {
     name: "Price/mo",
@@ -65,8 +65,8 @@ function CellValue({ value }: { value: boolean | string }) {
 
 export function ComparisonTable() {
   return (
-    <section className="px-6">
-      <div className="mx-auto max-w-5xl">
+    <section className="section-pad">
+      <div className="mx-auto max-w-[1200px]">
         <FadeIn>
           <h2 className="mb-4 text-center">How FinalBit Compares</h2>
           <p className="mb-12 text-center text-neutral-200">
@@ -75,17 +75,17 @@ export function ComparisonTable() {
           </p>
         </FadeIn>
         <FadeIn delay={150}>
-        <div className="overflow-x-auto rounded-[16px] border border-gray-400/30">
-          <table className="w-full min-w-[640px] text-sm">
+        <div className="overflow-x-auto rounded-[16px] border border-gray-200/20 bg-neutral-400/60">
+          <table className="w-full min-w-[640px] text-base">
             <thead>
-              <tr className="border-b border-gray-400/30 bg-gray-400/30">
-                <th className="px-4 py-3 text-left font-medium text-neutral-200">
+              <tr className="border-b border-gray-200/20 bg-white/[0.06]">
+                <th className="px-5 py-4 text-left font-medium text-neutral-200">
                   Feature
                 </th>
                 {competitors.map((c, i) => (
                   <th
                     key={c}
-                    className={`px-4 py-3 text-center font-semibold ${i === 0 ? "text-primary-300" : "text-neutral-200"}`}
+                    className={`px-5 py-4 text-center font-semibold ${i === 0 ? "bg-linear-to-br from-primary-200 to-primary-300 bg-clip-text text-transparent" : "text-neutral-200"}`}
                   >
                     {c}
                   </th>
@@ -93,18 +93,18 @@ export function ComparisonTable() {
               </tr>
             </thead>
             <tbody>
-              {features.map((f) => (
+              {features.map((f, rowIdx) => (
                 <tr
                   key={f.name}
-                  className="border-b border-gray-400/20 last:border-0"
+                  className={`border-b border-gray-200/10 transition-colors last:border-0 hover:bg-white/[0.06] ${rowIdx % 2 === 1 ? "bg-white/[0.03]" : ""}`}
                 >
-                  <td className="px-4 py-3 font-medium text-neutral-100">
+                  <td className="px-5 py-3.5 font-medium text-neutral-100">
                     {f.name}
                   </td>
                   {f.support.map((val, i) => (
                     <td
                       key={`${f.name}-${i}`}
-                      className={`px-4 py-3 text-center ${i === 0 ? "bg-primary-300/5" : ""}`}
+                      className={`px-5 py-3.5 text-center ${i === 0 ? "bg-primary-300/10 font-medium text-white" : ""}`}
                     >
                       <CellValue value={val} />
                     </td>

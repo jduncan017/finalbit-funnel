@@ -1,22 +1,37 @@
 import { FadeIn } from "~/components/FadeIn";
-import { ProductShot } from "~/components/ProductShot";
+import { ProductImage } from "~/components/ProductImage";
 
-export function ProductShowcase() {
+interface ProductShowcaseProps {
+  image?: string;
+}
+
+export function ProductShowcase({
+  image = "/product/script-upload.jpg",
+}: ProductShowcaseProps) {
   return (
-    <section className="relative px-6 py-16 md:py-24">
+    <section
+      className="relative mt-40 overflow-hidden"
+      style={{
+        maskImage:
+          "linear-gradient(to bottom, black 60%, rgba(0, 0, 0, 0) 90%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, black 65%, rgba(0, 0, 0, 0) 90%)",
+      }}
+    >
       {/* Decorative gradient orb */}
-      <div className="gradient-orb left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-primary-300" />
+      <div className="gradient-orb bg-primary-300 top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-[1200px]">
         <FadeIn>
-          <h2 className="mb-10 text-center">
+          <h2 className="mb-16 text-center">
             See Your Entire Pre-Production in One View
           </h2>
         </FadeIn>
         <FadeIn delay={150}>
-          <ProductShot
-            description="Full product interface with sidebar navigation, script editor, AI breakdown panel, shooting schedule calendar, and storyboard grid"
-            aspectRatio="16/9"
+          <ProductImage
+            src={image}
+            alt="Full product interface with sidebar navigation, script editor, AI breakdown panel, shooting schedule calendar, and storyboard grid"
+            direction="center"
           />
         </FadeIn>
       </div>
